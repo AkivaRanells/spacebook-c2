@@ -29,9 +29,7 @@ var SpacebookApp = function () {
 
       for (var i = 0; i < this.posts.length; i += 1) {
         var post = this.posts[i];
-        this.$posts.append('<p class="post" data-id=' + post.id + '>'
-          + '<a href="#" class="remove">remove</a> ' + post.text + '</p>');
-
+        this.$posts.append('<div class="post" data-id=' + post.id + '><a href="#" class="remove">remove</a> ' + post.text  + '<div class="comments-container"><ul class=comments-list></ul><input type="text" class="comment-name"><button class="btn btn-sm btn-primary add-comment" type="button">Post Comment</button></div></div>');
       }
     },
 
@@ -43,12 +41,12 @@ var SpacebookApp = function () {
 
       this.posts.splice(this.posts.indexOf(post), 1);
     },
-    
+
     createComment : function(currentComment){
       let commentText = $(currentComment).closest('div.comments-container').find('.comment-name').val();
       let postId = $(currentComment).closest('div.post').data().id;
-      let foundPost =_findPostById(postId);
-      foundPost.push([{text: commentText}]);
+      let foundPost =this._findPostById(postId);
+      foundPost.comments = [{text: commentText}];
     }
   };
 }
@@ -70,3 +68,6 @@ $('.posts').on('click', 'a', function () {
   app.removePost(this);
   app.renderPosts();
 });
+$('.posts').on('click', '.add-comment', function (){
+  app.createComment(this);
+})
