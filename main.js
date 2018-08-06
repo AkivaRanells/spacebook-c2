@@ -7,7 +7,7 @@ const getInput = function () {
 };
 
 const createPost = function () {
-    return { text: getInput(), id: uniqueId++ };
+    return { text: getInput(), id: uniqueId++};
 };
 
 const putInDiv = function (post) {
