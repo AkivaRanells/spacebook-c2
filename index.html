@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title></title>
 </head>
+
 <body>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -12,18 +14,8 @@
         <h1>Spacebook</h1>
       </div>
 
-      <ul class="posts">
-          <script id="post-template" type="text/x-handlebars-template">
-            <div class="post">
-              <a href="#" class="remove">remove</a> 
-              <a href="#" class="show-comments">comments</a> {{ post.text }}
-              <div class="comments-container">
-                <div class="comments-list">
-                <input type="text" class="comment-name"><button class="btn btn-primary add-comment">Post Comment</button> 
-              </div>
-            </div>
-          </script>
-      </ul>
+      <div class="posts">
+      </div>
 
       <form>
         <h3>Add a New Post</h3>
@@ -39,6 +31,29 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+  <script id="post-template" type="text/x-handlebars-template">
+    {{#each posts}}
+    <div class="post" data-id="{{ id }}">
+      <a href="#" class="remove-post">remove</a> 
+       <span>{{text}}</span>
+       <div class="comments-container">
+         <ul class=comments-list>
+            {{#if comments}}
+            {{#each comments}}
+            <li>{{text}}</li>       
+
+            <a href="#" class="remove-comment">remove</a>
+            {{/each}}
+          {{/if}}
+         </ul>
+         <input type="text" class="comment-name">
+         <button class="btn btn-sm btn-primary add-comment" type="button">Post Comment</button>
+        </div>
+
+    </div>
+    {{/each }}
+  </script>
   <script src="main.js"></script>
 </body>
+
 </html>
