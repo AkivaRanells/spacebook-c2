@@ -33,6 +33,7 @@ var SpacebookApp = function () {
         if (this.posts[i].id === id) {
           return this.posts[i];
         }
+        return undefined;
       }
     },
 
@@ -68,6 +69,9 @@ var SpacebookApp = function () {
 
     removePost: function (postID) {
       var post = this._findPostById(postID);
+      if(!post){
+        return;
+      }
       this.posts.splice(this.posts.indexOf(post), 1);
     },
 
