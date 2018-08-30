@@ -1,7 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+// mongoose.Promise = require('bluebird'); 
+const myRoutes = require('./router')
 const SERVER_PORT = 8080;
 
 mongoose.connect('mongodb://localhost/spacebookDB', function() {
@@ -9,13 +10,13 @@ mongoose.connect('mongodb://localhost/spacebookDB', function() {
 })
 
 var Post = require('./models/postModel');
-
+var Comment = require('./models/postModel');
 var app = express();
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use('/', myRoutes);
 
 // You will need to create 5 server routes
 // These will define your API:
