@@ -28,6 +28,7 @@ class AjaxRequests{
             url: this.url,
         })
     };
+
 }
 
 export default AjaxRequests

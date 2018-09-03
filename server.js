@@ -17,7 +17,7 @@ var app = express();
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', myRoutes);
 
 // app.post('/profile', upload.single('avatar'), function (req, res, next) {

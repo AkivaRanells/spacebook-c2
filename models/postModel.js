@@ -12,6 +12,7 @@ let commentSchema = new mongoose.Schema({
 
 let postSchema = new mongoose.Schema({
     text: String,
+    image: String,
     comments: [commentSchema]
 });
 

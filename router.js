@@ -2,6 +2,18 @@ const express = require('express');
 const router = express.Router();
 // const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+
+const multer = require('multer');
+const IMAGES_DIR = 'images/'
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `public/${IMAGES_DIR}`)
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  })
+const upload = multer({ storage: storage });
 // mongoose.Promise = require('bluebird'); 
 
 
@@ -41,7 +53,19 @@ router.post('/posts', function (req, res) {
 
     res.send(thisPost);
 })
-
+router.post('/posts', upload.single('imagename'), (req, res) => {
+    const thisPost = new Post({
+        text: req.body.text,
+        image: `${IMAGES_DIR}${req.file.originalname}`,
+        comments: []
+    });
+    thisPost.save()
+    .then((post, err) =>{
+        if(err) console.log(err);
+        res.send(post);
+    });
+    
+});
 // router.post('/add', upload.single('imagename'), function(req, res, next) {
 //     var image = req.file.filename;
 //    /** rest */ 
