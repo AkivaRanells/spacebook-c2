@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 const myRoutes = require('./router')
 const SERVER_PORT = 8080;
 
-mongoose.connect('process.env.CONNECTION_STRING || mongodb://localhost/spacebookDB', function() {
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB', function() {
   console.log("DB connection established!!!");
 })
 
