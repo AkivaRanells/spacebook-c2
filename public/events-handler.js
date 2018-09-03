@@ -86,6 +86,23 @@ class EventsHandler {
 
     }
 
+    // registerAddPhoto(){
+    //     $('.uploadImage').submit(function(e){
+    //         e.preventDefault();
+            
+    //         var title = $('#title').val(); 
+            
+    //         $(this).ajaxSubmit({
+    //           data: {title: title},
+    //           contentType: 'application/json',
+    //           success: function(response){
+    //             console.log('image uploaded and form submitted');     
+    //           }
+    //       });
+    //         return false;
+    //    });
+    // }
+
     registerRemoveComment() {
         this.$posts.on('click', '.remove-comment', (event) => {
             let $commentsList = $(event.currentTarget).closest('.post').find('.comments-list');

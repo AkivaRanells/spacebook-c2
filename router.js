@@ -3,11 +3,16 @@ const router = express.Router();
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 // mongoose.Promise = require('bluebird'); 
+
+
 mongoose.connect('mongodb://localhost/spacebookDB', function () {
     console.log("DB connection established!!!");
 });
 
+
 const Post = require('./models/postModel');
+
+
 // let testPost = new Post({
 //     text: "TEST",
 //     comments: []
@@ -33,8 +38,14 @@ router.post('/posts', function (req, res) {
     let thisPost = new Post(req.body);
     thisPost.save();
     // console.log(thisPost);
+
     res.send(thisPost);
 })
+
+// router.post('/add', upload.single('imagename'), function(req, res, next) {
+//     var image = req.file.filename;
+//    /** rest */ 
+// });
 
 // 3) to handle deleting a post
 router.delete('/posts/:id', function(req, res){
