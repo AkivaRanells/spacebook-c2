@@ -20,12 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', myRoutes);
 
-app.post('/profile', upload.single('avatar'), function (req, res, next) {
-  // req.file is the `avatar` file
-  console.log(req.file);
-  // req.body will hold the text fields, if there were any
-  res.send("it worked");
-})
+// app.post('/profile', upload.single('avatar'), function (req, res, next) {
+//   // req.file is the `avatar` file
+//   console.log(req.file);
+//   // req.body will hold the text fields, if there were any
+//   res.send("it worked");
+// })
 
 var debug = require('debug')('myapp');
 debug('hello from the debugger');
