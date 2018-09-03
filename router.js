@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 // mongoose.Promise = require('bluebird'); 
 
 
-mongoose.connect('mongodb://localhost/spacebookDB', function () {
-    console.log("DB connection established!!!");
-});
+// mongoose.connect('mongodb://localhost/spacebookDB', function () {
+//     console.log("DB connection established!!!");
+// });
 
 
 const Post = require('./models/postModel');
